@@ -2,10 +2,13 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 
+import { useUserContext } from '../hooks/useUserContext'
+
 const initialState = { username: '', password: '' }
 
 const Login = () => {
   const { push } = useHistory()
+  const { login } = useUserContext()
 
   const [credentials, setCredentials] = useState(initialState)
 
@@ -25,6 +28,7 @@ const Login = () => {
       .post('http://localhost:5000/api/login', credentials)
       .then((res) => {
         localStorage.setItem('token', res.data.payload)
+        login()
         push('/friends')
       })
       .catch((err) => {

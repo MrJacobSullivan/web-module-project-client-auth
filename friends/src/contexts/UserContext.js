@@ -8,7 +8,7 @@ export const UserContext = createContext()
 const UserContextProvider = ({ children }) => {
   const [user, dispatch] = useReducer(logger(reducer), initialState)
 
-  const login = (username) => dispatch(actions.login(username))
+  const login = () => dispatch(actions.login())
   const logout = () => dispatch(actions.logout())
 
   return <UserContext.Provider value={{ user, login, logout }}>{children}</UserContext.Provider>

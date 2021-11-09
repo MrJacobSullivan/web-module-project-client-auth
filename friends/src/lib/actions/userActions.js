@@ -2,6 +2,6 @@ export const LOGIN = 'LOGIN'
 export const LOGOUT = 'LOGOUT'
 
 export const actions = {
-  login: (username) => ({ type: LOGIN, payload: username }),
+  login: () => ({ type: LOGIN }),
   logout: () => ({ type: LOGOUT }),
 }

@@ -10,8 +10,7 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.2",
-    "sass": "^1.32.5",
-    "use-reducer-logger": "^1.0.2"
+    "sass": "^1.32.5"
   },
   "scripts": {
     "start": "nodemon server.js"
