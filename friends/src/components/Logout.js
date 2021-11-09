@@ -2,11 +2,11 @@ import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 
-import { useUserContext } from '../hooks/useUserContext'
+import { useAppContext } from '../hooks/useAppContext'
 
 const Logout = () => {
   const { push } = useHistory()
-  const { logout } = useUserContext()
+  const { logout } = useAppContext()
 
   useEffect(() => {
     axiosWithAuth()

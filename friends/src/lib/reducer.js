@@ -1,18 +1,25 @@
-import { LOGIN, LOGOUT } from '../actions/userActions'
+import { ACTIONS } from './actions'
 
 export const initialState = {
-  isLoggedIn: false,
+  user: {
+    isLoggedIn: false,
+  },
+  friends: {
+    friendsList: [],
+    isLoading: false,
+    error: '',
+  },
 }
 
 export const reducer = (state, action) => {
   switch (action.type) {
-    case LOGIN:
+    case ACTIONS.LOGIN:
       return {
         ...state,
         isLoggedIn: true,
       }
 
-    case LOGOUT:
+    case ACTIONS.LOGOUT:
       return {
         ...state,
         isLoggedIn: false,

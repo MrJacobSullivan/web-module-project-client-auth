@@ -4,11 +4,11 @@ import { render } from 'react-dom'
 import App from './App'
 import './reset.css'
 
-import ContextProviders from './contexts/ContextProviders'
+import AppContextProvider from './contexts/AppContext'
 
 render(
-  <ContextProviders>
+  <AppContextProvider>
     <App />
-  </ContextProviders>,
+  </AppContextProvider>,
   document.getElementById('root')
 )
