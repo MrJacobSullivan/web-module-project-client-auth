@@ -1,16 +1,45 @@
 import React from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
 import Login from './components/Login'
 import Logout from './components/Logout'
-
-import './App.css'
+import FriendsList from './components/FriendsList'
 
 function App() {
   return (
-    <div className='App'>
-      <h2>Client Auth Project</h2>
-    </div>
+    <Router>
+      <div>
+        <header>
+          <Link to='/'>
+            <h2>Client Auth Project</h2>
+          </Link>
+
+          <Link to='/login'>
+            <span>Login</span>
+          </Link>
+
+          <Link to='/logout'>
+            <span>Logout</span>
+          </Link>
+
+          <Link to='/friends'>
+            <span>Friends</span>
+          </Link>
+        </header>
+
+        <Switch>
+          <Route exact path='/friends' component={FriendsList} />
+          <Route path='/logout' component={Logout} />
+          <Route path='/login' component={Login} />
+          <Route
+            path='/'
+            component={() => {
+              return <div>Home</div>
+            }}
+          />
+        </Switch>
+      </div>
+    </Router>
   )
 }
 
