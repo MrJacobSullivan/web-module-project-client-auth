@@ -1,6 +1,8 @@
 import React from 'react'
 import { Route, Link, Switch } from 'react-router-dom'
 
+import PrivateRoute from './components/PrivateRoute'
+
 import Login from './components/Login'
 import Logout from './components/Logout'
 import FriendsList from './components/FriendsList'
@@ -27,8 +29,8 @@ function App() {
       </header>
 
       <Switch>
-        <Route exact path='/friends' component={FriendsList} />
-        <Route path='/logout' component={Logout} />
+        <PrivateRoute exact path='/friends' component={FriendsList} />
+        <PrivateRoute path='/logout' component={Logout} />
         <Route path='/login' component={Login} />
         <Route
           path='/'

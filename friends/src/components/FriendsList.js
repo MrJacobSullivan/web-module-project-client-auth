@@ -32,7 +32,7 @@ function FriendsList() {
   return (
     <div>
       {friends.map((friend) => (
-        <Friend key={friend.id} id={friend.id} />
+        <Friend key={friend.id} name={friend.name} id={friend.id} />
       ))}
     </div>
   )

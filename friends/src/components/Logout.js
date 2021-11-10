@@ -12,12 +12,14 @@ const Logout = () => {
     axiosWithAuth()
       .post('/logout')
       .then(() => {
-        localStorage.removeItem('token')
         // user.logout()
+        localStorage.removeItem('token')
       })
       .catch((err) => console.log(err))
-      .finally(() => push('/'))
-  })
+      .finally(() => {
+        push('/')
+      })
+  }, [push])
 
   return null
 }
