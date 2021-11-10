@@ -5,7 +5,7 @@ export const initialState = {
     isLoggedIn: false,
   },
   friends: {
-    friendsList: [],
+    list: [],
     isLoading: false,
     error: '',
   },
@@ -16,13 +16,52 @@ export const reducer = (state, action) => {
     case ACTIONS.LOGIN:
       return {
         ...state,
-        isLoggedIn: true,
+        user: {
+          isLoggedIn: true,
+        },
       }
 
     case ACTIONS.LOGOUT:
       return {
         ...state,
-        isLoggedIn: false,
+        user: {
+          isLoggedIn: false,
+        },
+        friends: {
+          list: [],
+          isLoading: false,
+          error: '',
+        },
+      }
+
+    case ACTIONS.GET_START:
+      return {
+        ...state,
+        friends: {
+          list: [],
+          isLoading: true,
+          error: '',
+        },
+      }
+
+    case ACTIONS.GET_SUCCESS:
+      return {
+        ...state,
+        friends: {
+          list: action.payload,
+          isLoading: false,
+          error: '',
+        },
+      }
+
+    case ACTIONS.GET_FAILURE:
+      return {
+        ...state,
+        friends: {
+          list: [],
+          isLoading: false,
+          error: action.payload,
+        },
       }
 
     default:

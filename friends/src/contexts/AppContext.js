@@ -6,12 +6,22 @@ import { actions } from '../lib/actions'
 export const AppContext = createContext()
 
 const AppContextProvider = ({ children }) => {
-  const [user, dispatch] = useReducer(logger(reducer), initialState)
+  const [state, dispatch] = useReducer(logger(reducer), initialState)
 
-  const login = () => dispatch(actions.login())
-  const logout = () => dispatch(actions.logout())
+  const user = {
+    login: () => dispatch(actions.login()),
+    logout: () => dispatch(actions.logout()),
+  }
 
-  return <AppContext.Provider value={{ user, login, logout }}>{children}</AppContext.Provider>
+  const getFriends = {
+    start: () => dispatch(actions.getStart()),
+    success: (friends) => dispatch(actions.getSuccess(friends)),
+    failure: (error) => dispatch(actions.getFailure(error)),
+  }
+
+  return (
+    <AppContext.Provider value={{ ...state, getFriends, user }}>{children}</AppContext.Provider>
+  )
 }
 
 export default AppContextProvider
